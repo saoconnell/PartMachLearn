@@ -1,0 +1,30 @@
+---
+title: "Human Activity Prediction"
+author: "Stephen OConnell"
+date: "September 20, 2014"
+output: html_document
+---
+
+## Summary
+
+This is the summary of the process
+
+## Preprocessing
+
+
+```{r}
+summary(cars)
+```
+
+
+
+```{r, echo=FALSE}
+plot(cars)
+```
+
+
+## Model Selection
+
+
+## Results
+
