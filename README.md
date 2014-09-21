@@ -109,8 +109,6 @@ __Algorithm__
 - rf = random forest
 - nnet - neural net
 - svm = support vector machine
-<!-- html table generated in R 3.1.0 by xtable 1.7-3 package -->
-<!-- Sun Sep 21 15:14:20 2014 -->
 <TABLE border=1>
 <TR> <TH>  </TH> <TH> Accuracy </TH>  </TR>
   <TR> <TD align="right"> rd.rf </TD> <TD align="right"> 0.99 </TD> </TR>
