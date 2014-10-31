@@ -12,10 +12,10 @@ HAR data.
 
 Program                     |  Description
 --------------------------- | ------------------------------------------------------------------
-final_model_comparison.R    |
-model_submission.R          |
-modeling.R                  |
-nnet_modeling.R             |             
+final_model_comparison.R    | Reads the output from the 6 different models, compares the results and produces the final report.
+model_submission.R          | Reads the final test cases and submits the results for scoring
+modeling.R                  | Experiment with various settings to determine the trade off of elapsed time vs. model creation settings.
+nnet_modeling.R             | Reads the raw data file, splits data, stratified on classe, using a common seed, builds a neural net model, and runs cross validation to determine model accuracy.             
 pp_nnet_modeling.R          |
 pp_rf_modeling.R            |
 pp_svm_modeling.R           |
