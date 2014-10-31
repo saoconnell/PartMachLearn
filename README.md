@@ -8,7 +8,7 @@ output: html_document
 ## Summary
 
 The following is a summary of the approach I used to create the final model for predicting the specific
-activity in the test dataset.
+activity in the test data set.
 
 The original experimental design, data collection, data pre-processing and analysis is documented on the following web page and in the following paper:
 
@@ -20,13 +20,13 @@ __Qualitative Activity Recognition of Weight Lifting Exercises__
 
 http://groupware.les.inf.puc-rio.br/work.jsf?p1=11201
 
-##  Startegy
+##  Strategy
 
 Before starting out the project I developed the following strategy for developing the final model.
 
-1. During the data preprocessing I would create two datasets for building the models.  The first dataset
+1. During the data pre-processing I would create two data sets for building the models.  The first data set
 was just the raw data trimmed down to only the features that contributed information to the model.  The second
-dataset was created by passing the first dataset through carets preprocessing function to perform the following
+data set was created by passing the first data set through carets pre-processing function to perform the following
 transformations:
   c('BoxCox', 'center', 'scale', 'pca')
 
@@ -43,23 +43,23 @@ I selected the following algorithms to compare.
 on this approach after an initial experiment with training a model with 10 fold, 10 times.  I realized the model
 construction time would be too significant for the marginal increase in model performance.  
 
-5. Compare the model performance using the confusionMatix to select the better performing model/dataset combination.
+5. Compare the model performance using the confusionMatix to select the better performing model/data set combination.
 
 6. If there were differences, I would use the probabilities for each classification as the tie breaker.
 
 
-## Preprocessing - Feature Selection
+## Pre-processing - Feature Selection
 
 ### Raw Data
 
-My first pass at preprocessing the data was to eliminate the samples and features that did not contribute information
+My first pass at pre-processing the data was to eliminate the samples and features that did not contribute information
 that could be used in the model building phase.
 
 I first removed all the rows that had new_window = 'yes'.  I removed these as they are unique cases of transitioning between
 exercises, which is not something that contribute information to the model.  These rows also have values in
 features that are not consistent with the new_window = 'no'.
 
-I then removed the first 7 columns from the dataset.  These columns contained either text, non-categorical data, and time series 
+I then removed the first 7 columns from the data set.  These columns contained either text, non-categorical data, and time series 
 data, which are not useful in building a model to predict the activity.
 
 -  V1
@@ -79,30 +79,30 @@ After completing the above feature selection process I reduced the number of fea
 
 I performed the same feature selection process on the test data set as well.
 
-### Caret PreProcess Raw Data
+### Caret Pre-process Raw Data
 
-To determined if additional preprocessing of the data would improve the results I decided to 
-use the caret preProcess function on the data set created in the first pass.  
+To determined if additional pre-processing of the data would improve the results I decided to 
+use the caret pre-process function on the data set created in the first pass.  
 
 I choose an aggressive approach to see if these transformations would improve the model building process.
 
   __c('BoxCox', 'center', 'scale', 'pca')__
 
-The resulting dataset was reduced from 32 features to 23 features.
+The resulting data set was reduced from 32 features to 23 features.
 
 I performed the same transformation on the test data set as well.
 
 
 ## Model Creation
 
-I created a model for each algorithm/dataset combination, for a total of 6 different models:
+I created a model for each algorithm/data set combination, for a total of 6 different models:
 
 __Naming Convention__
 
 __Data Set__
 
 - rd = raw data
-- pp = preprocessed data
+- pp = pre-processed data
 
 __Algorithm__
 
@@ -123,12 +123,12 @@ __Observations__
 
 The random forest with the raw data was the clear winner on accuracy.
 
-An interesting comparison is the neural net difference in the raw data and the preprocessed data.  The preprocessed data brought the accuracy up 16%.  This is probably just a by-product of how nnet builds a model.  Several more nnet construction would be required to determine if the dataset was making the difference.
+An interesting comparison is the neural net difference in the raw data and the pre-processed data.  The pre-processed data brought the accuracy up 16%.  This is probably just a by-product of how nnet builds a model.  Several more nnet construction would be required to determine if the data set was making the difference.
 
-For svm the preprocessed dataset did not impact the performance of the model.
+For svm the pre-processed data set did not impact the performance of the model.
 
 In all these cases, just building one model is not enough evidence that the data was really making a difference.  This would
-require more experimentation to determine if the preprocessed data was an improvement or detriment to model performance.
+require more experimentation to determine if the pre-processed data was an improvement or detriment to model performance.
 
 
 ## Results
